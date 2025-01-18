@@ -1,41 +1,39 @@
-<?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+<form action="https://formspree.io/f/xanngeqw" method="POST">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required />
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'anveethraaj@gmail.com';
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required />
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="subject" />
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    <button type="submit">Send Message</button>
+</form>
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+<div id="status"></div>
 
-  echo $contact->send();
-?>
+<script>
+    const form = document.querySelector('form');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            status.innerHTML = 'Thanks for your message! I will get back to you soon.';
+            form.reset();
+        } else {
+            status.innerHTML = 'Oops! There was a problem submitting your form.';
+        }
+    });
+</script>
