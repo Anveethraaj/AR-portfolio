@@ -3,7 +3,7 @@
 Welcome to my portfolio! This website showcases my journey, skills, projects, and achievements. It's a reflection of my passion for technology and continuous learning.  
 
 ## 🖥️ Website Link  
-[Visit My Portfolio](https://anveethraaj.github.io/AR-portfolio/portfolio-main/index.html)
+[Visit My Portfolio](https://anveethraaj.github.io/AR-portfolio/portfolio/index.html)
 
 ## 📖 About Me  
 Hi! I'm **Anveethraaj**, a passionate Computer Science student at Sri Krishna College of Technology. I am enthusiastic about building web applications, solving real-world problems through technology, and continuously improving my skill set.  
